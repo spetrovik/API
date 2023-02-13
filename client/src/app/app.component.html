@@ -1,0 +1,77 @@
+
+<div class="card mb-3" style="max-width: 1500px;">
+  <div class="row g-0">
+    <div class="col-md-8">
+      <img src="../assets/image-coffee.jpg" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+<h1 class="center colorBlue">{{title}}</h1>
+<div class="container">
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="container">
+    <div class="row">
+      <div class="col-lg-12 offset-3 mt-5">
+        <div class="card coffeesStyle" style="max-width: 500px;">
+        <div class="row col-lg-12">
+          <div class="col-lg-6">
+        <div class="form-check" *ngFor='let coffee of coffees'>
+          <input class="form-check-input" type="radio" name="coffeeType" value="{{coffee.name}}" id="flexRadioDefault2" (change)="changeCoffee(coffee.id)"
+            ngModel required >
+          <label class="form-check-label" for="coffeeType">
+            {{coffee.name}}
+          </label>
+        </div>
+      </div>
+        <div class="col-lg-6">
+        <div *ngFor='let ingridient of ingridientsCustom| unique'>
+          <input type="range" class="mx-2" id="customRange1" value="{{ingridient.ingridientQuantity}}"
+            min="0" max="5" step="1" name="ingridientQuantity" ng-model required disabled/>
+            <label class="custom-check-label">
+              {{ingridient.name}}
+            </label>
+        </div>
+      </div>
+      </div>
+        </div>
+        <br />
+        <div class="card">
+          <div class="row">
+          <div class="col-lg-12"> 
+            <div class="col-lg-6">       
+            <div *ngFor='let ingridient of ingridients | unique'>
+              <input type="range" class="custom-range mx-2" id="customRange1" min="0" max="5" value="0" name="ingridientQuantity" value="{{ingridientQuantity}}" ngModel required/> 
+          <div class="custom-check">
+            <input class="custom-check-input mx-2" type="checkbox" id="defaultCheck1" name="" value=""
+               (change)="onChange($event.target.checked, ingridient, f)"
+              ngModel="ingridient.isChecked" required />
+            <label class="custom-check-label" for="defaultCheck1">
+              {{ingridient.name}}
+            </label>
+          </div>
+        </div>
+        </div>
+        <div class="orderLabel" *ngIf="submitted">
+          <div class="col-lg-6">
+            <h3>Your order</h3>
+            <p>Coffee: {{typeOfCoffee.name}}</p>
+            <p>Ingridient: {{ typeOfCoffee.ingridient}}</p>
+          </div>
+        </div>
+        </div>
+      </div>
+      <br />
+      <br />
+      <div class="col-lg-3">
+        <button [disabled]="!f.valid && isDisabled" type="submit" class="btn btn-primary mt-2">Order</button>
+      </div>     
+    </div>
+    </div>
+  </div>
+  </div>
+  </form>
+</div>
+</div>
+</div>
+</div>
+</div>

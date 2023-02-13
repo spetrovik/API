@@ -1,0 +1,24 @@
+.input.ng-invalid.ng-touched{
+    border:1px solid red;
+}
+.colorBlue{
+    color: rgb(10, 10, 126);
+}
+.center{
+    text-align: center;
+}
+
+input[type="range"] {
+    writing-mode: bt-lr;
+  }
+  .border{
+      box-shadow: cadetblue;
+      border-color : rgb(7, 7, 160);
+  }
+  .container{
+      border: 1 unset rgb(7, 7, 160);
+  }
+  .coffeesStyle{
+      box-shadow: chocolate;
+      border: none;
+  }
